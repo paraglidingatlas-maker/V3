@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap: Paragliding Atlas</title>
+<meta name="description" content="An interactive map of every page on Paragliding Atlas: sections, knowledge base series and all published episodes.">
+<link rel="canonical" href="{{BASE}}sitemap.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sitemap">
+<meta property="og:description" content="An interactive map of every page on Paragliding Atlas: sections, knowledge base series and all published episodes.">
+<meta property="og:image" content="{{BASE}}assets/images/hero.jpg">
+<meta property="og:url" content="{{BASE}}sitemap.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Sitemap","url":"{{BASE}}sitemap.html","description":"An interactive map of every page on Paragliding Atlas: sections, knowledge base series and all published episodes.","isPartOf":{"@type":"WebSite","name":"Paragliding Atlas","url":"{{BASE}}"}}
+</script>
+<meta name="description" content="Everything on Paragliding Atlas in one place. Every series, every episode, and where to find the trips, the Knowledge Base and the podcast.">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
+<link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+/* the five places you can go */
+
+.sm-cat{margin-bottom:2.4rem;}
+.sm-cat h2{font-family:var(--font-display);font-weight:700;font-size:0.78rem;
+  color:var(--orange);text-transform:uppercase;letter-spacing:0.14em;
+  padding-bottom:0.5rem;border-bottom:1px solid var(--line);margin-bottom:0.2rem;}
+
+.sm-series{border-bottom:1px solid var(--line);}
+.sm-series summary{list-style:none;cursor:pointer;padding:0.95rem 0.2rem;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:0.35rem 1rem;
+  transition:color 0.15s ease;}
+.sm-series summary::-webkit-details-marker{display:none;}
+.sm-series summary::before{content:"+";color:var(--orange);font-weight:700;
+  width:1rem;flex-shrink:0;}
+.sm-series[open] summary::before{content:"\2212";}
+.sm-series summary:hover .sm-name{color:var(--orange);}
+.sm-name{font-family:var(--font-display);font-weight:600;font-size:1rem;
+  transition:color 0.15s ease;}
+.sm-count{color:var(--gray);font-size:0.8rem;}
+.sm-body{padding:0 0 1.3rem 1rem;}
+.sm-jump{margin-bottom:0.8rem;display:flex;flex-wrap:wrap;gap:1.2rem;}
+.sm-jump a{color:var(--orange);font-size:0.82rem;text-decoration:underline;
+  text-underline-offset:3px;}
+/* The shared drawn underline (styles.css, Feedback) takes over on hover. */
+.sm-jump a:is(:hover,:focus-visible){text-decoration-color:transparent;}
+.sm-eps{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:0.15rem 1.6rem;}
+.sm-eps li{padding:0.28rem 0;}
+.sm-eps a{color:var(--gray-light);font-size:0.88rem;line-height:1.45;
+  transition:color 0.15s ease;}
+.sm-eps a:hover{color:var(--orange);}
+.sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
+
+/* =====================================================================
+   Sitemap as a night sky.
+   ===================================================================== */
+.sky{position:relative;}
+.sky-hud{position:absolute;z-index:3;left:clamp(1.5rem,5vw,4rem);top:clamp(1.3rem,2.6vw,2.2rem);max-width:44rem;pointer-events:none;}
+.sky-hud h1{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.15;color:var(--white);margin:0;}
+.sky-lede{color:var(--gray-light);font-size:0.95rem;line-height:1.55;margin:0.55rem 0 0;max-width:27rem;}
+.sky-stat{color:var(--gray);font-size:var(--fs-small);margin:0.5rem 0 0;}
+.sky-count{color:var(--orange);font-size:var(--fs-micro);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin:0.7rem 0 0;}
+.sky-actions{position:absolute;z-index:4;left:clamp(1.5rem,5vw,4rem);bottom:1rem;display:flex;flex-wrap:wrap;gap:0.45rem;max-width:calc(100% - 16rem);}
+.sky-actions button{min-height:38px;padding:0.55rem 0.9rem;cursor:pointer;background:rgba(20,21,25,0.7);border:1px solid var(--edge-hi);
+  color:var(--white);font-family:var(--font-body);font-size:0.82rem;font-weight:600;transition:border-color .18s ease,color .18s ease,filter .18s ease;}
+.sky-actions button:hover{border-color:var(--orange);color:var(--orange);}
+.sky-actions .sky-primary{background:var(--orange);border-color:var(--orange);color:var(--ink);font-weight:700;}
+.sky-actions .sky-primary:hover{color:var(--ink);filter:brightness(1.1);}
+.sky-actions button:focus-visible,.sky-ctrl button:focus-visible,.sky-list button:focus-visible{outline:2px solid var(--white);outline-offset:2px;}
+
+.sky-view{position:relative;height:clamp(620px,calc(100vh - 150px),1100px);overflow:hidden;cursor:grab;touch-action:none;
+  user-select:none;-webkit-user-select:none;
+  background:radial-gradient(120% 90% at 50% 100%,var(--card) 0%,var(--bg) 62%);}
+.sky-view.is-dragging{cursor:grabbing;}
+.sky-stars,.sky-svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.sky-hit{fill:transparent;}
+
+/* ---- Stars ---- */
+.sky-dot{transform:scale(var(--ss,1));}
+.sky-lab{transform:scale(var(--ls,1));}
+.sky-star{cursor:pointer;outline:none;}
+.sky-core{fill:var(--white);animation:sky-twinkle 4.6s ease-in-out infinite;}
+.sky-glow{fill:var(--white);opacity:0.07;transition:opacity .2s ease,fill .2s ease;}
+.sky-star:hover .sky-glow,.sky-star:focus-visible .sky-glow,.sky-star.is-picked .sky-glow{opacity:0.3;fill:var(--orange);}
+.sky-star:hover .sky-core,.sky-star.is-picked .sky-core,.sky-star:focus-visible .sky-core{fill:var(--orange);animation:none;}
+@keyframes sky-twinkle{0%,100%{opacity:1;}50%{opacity:0.5;}}
+@media (prefers-reduced-motion:reduce){ .sky-core{animation:none;} }
+
+/* ---- Constellations: the emblem is there all along, and is drawn in when found ---- */
+.sky-art *{fill:none;stroke:var(--gray-light);stroke-width:0.55;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:1;stroke-dashoffset:1;opacity:0.7;transition:stroke-dashoffset 1.3s cubic-bezier(.4,0,.2,1),stroke .3s ease,opacity .3s ease;}
+.sky-con.is-near .sky-art *{stroke-dashoffset:0;opacity:0.13;transition:opacity .3s ease;}
+.sky-con.is-found .sky-art *,.sky.is-named .sky-art *{stroke-dashoffset:0;opacity:0.62;}
+.sky-con.is-open .sky-art *{stroke:var(--orange);opacity:0.85;}
+.sky-name{opacity:0;pointer-events:none;cursor:pointer;outline:none;transition:opacity .5s ease .7s;}
+.sky-con.is-found .sky-name,.sky.is-named .sky-name{opacity:1;pointer-events:auto;}
+.sky-name-main{font-family:var(--font-display);font-size:17px;font-weight:600;fill:var(--white);text-anchor:middle;dominant-baseline:central;transition:fill .18s ease;}
+.sky-name-sub{font-family:var(--font-body);font-size:10.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;fill:var(--gray);text-anchor:middle;dominant-baseline:central;}
+.sky-name:hover .sky-name-main,.sky-name:focus-visible .sky-name-main,.sky-con.is-open .sky-name-main{fill:var(--orange);}
+
+/* ---- Regions of the sky: the knowledge base categories ---- */
+.sky-region{cursor:pointer;outline:none;}
+.sky-region-name{font-family:var(--font-body);font-size:19px;font-weight:600;letter-spacing:0.34em;text-transform:uppercase;fill:var(--gray);
+  text-anchor:middle;dominant-baseline:central;transition:fill .18s ease;}
+.sky-region-rule{fill:none;stroke:var(--line);stroke-dasharray:2 8;}
+.sky-region:hover .sky-region-name,.sky-region:focus-visible .sky-region-name{fill:var(--orange);}
+
+/* ---- Card, list, toast, controls ---- */
+.sky-card{width:19rem;z-index:5;}
+.sky-card:not(.pinned){pointer-events:none;}
+.sky-card .mp-bd{padding:0.9rem 1.1rem 1.1rem;}
+.sky-card .mp-rd:empty{display:none;}
+.sky-list{position:absolute;z-index:4;right:clamp(1rem,3vw,2rem);top:1.1rem;bottom:4.6rem;width:19.5rem;display:none;overflow:auto;
+  padding:1.2rem 1.2rem 1rem;background:rgba(20,21,25,0.93);border:1px solid var(--edge-hi);
+  user-select:text;-webkit-user-select:text;cursor:auto;scrollbar-width:thin;}
+.sky-list.visible{display:block;}
+.sky-list h2{font-family:var(--font-display);font-weight:700;font-size:1.25rem;line-height:1.2;color:var(--white);margin:0 1.6rem 0.6rem 0;}
+.sky-list-links{display:flex;flex-wrap:wrap;gap:0.3rem 1.1rem;margin:0 0 0.8rem;}
+.sky-list-links a{color:var(--orange);font-size:0.82rem;font-weight:600;}
+.sky-list ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+.sky-list li{border-bottom:1px solid var(--line);}
+.sky-list ol button{display:block;width:100%;text-align:left;background:transparent;border:0;cursor:pointer;padding:0.6rem 0;
+  color:var(--gray-light);font-family:var(--font-body);font-size:0.86rem;line-height:1.4;transition:color .15s ease;}
+.sky-list ol button:hover{color:var(--orange);}
+.sky-list-close{position:absolute;top:0.7rem;right:0.7rem;width:32px;height:32px;background:transparent;border:1px solid var(--edge);
+  color:var(--gray-light);font-size:1.1rem;line-height:1;cursor:pointer;}
+.sky-list-close:hover{border-color:var(--orange);color:var(--orange);}
+.sky-toast{position:absolute;z-index:4;left:50%;bottom:4.2rem;transform:translate(-50%,8px);margin:0;padding:0.55rem 0.95rem;max-width:calc(100% - 9rem);
+  background:rgba(20,21,25,0.94);border:1px solid var(--live);color:var(--white);font-size:0.88rem;font-weight:500;text-align:center;
+  opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;}
+.sky-toast.visible{opacity:1;transform:translate(-50%,0);}
+.sky-ctrl{position:absolute;z-index:4;right:clamp(1rem,3vw,2rem);bottom:1rem;display:flex;}
+.sky-ctrl button{height:38px;min-width:38px;padding:0 0.7rem;display:grid;place-items:center;cursor:pointer;
+  background:rgba(20,21,25,0.85);border:1px solid var(--edge-hi);color:var(--white);font-family:var(--font-body);font-size:1.1rem;line-height:1;}
+.sky-ctrl button + button{border-left:0;}
+.sky-ctrl .sky-reset{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+.sky-ctrl button:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ---- The ground: every other page, under a ridge line ---- */
+.sky-ground{position:relative;background:var(--card);}
+.sky-ridge{display:block;width:100%;height:40px;margin-top:-39px;position:relative;z-index:2;pointer-events:none;}
+.sky-ridge path{fill:var(--card);stroke:var(--edge-hi);stroke-width:1;vector-effect:non-scaling-stroke;}
+.sky-ground-in{max-width:1400px;margin:0 auto;padding:1.4rem clamp(1.5rem,5vw,4rem) 2rem;display:grid;
+  grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:1.5rem clamp(1.5rem,3vw,3rem);}
+.sky-g h2{font-family:var(--font-body);font-size:var(--fs-micro);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin:0 0 0.7rem;}
+.sky-g ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.1rem;}
+.sky-g a{display:inline-flex;align-items:center;gap:0.65rem;min-height:34px;color:var(--gray-light);font-size:0.92rem;transition:color .15s ease;}
+.sky-g a:hover{color:var(--orange);}
+.sky-g a img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:1px solid var(--edge-hi);flex:none;}
+.sky-g a span{display:flex;flex-direction:column;line-height:1.3;}
+.sky-g a small{color:var(--gray);font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+.sky-g:first-child ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.5rem 1rem;}
+.sky-hint{text-align:center;color:var(--gray);font-size:0.85rem;margin:0;padding:1.1rem 1.5rem clamp(2rem,4vw,3rem);background:var(--card);}
+
+@media(max-width:900px){ .sky-ground-in{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media(max-width:760px){
+  .sky-hud{position:static;padding:1.6rem clamp(1.25rem,5vw,2rem) 1.2rem;max-width:none;}
+  .sky-view{height:74vh;min-height:500px;}
+  .sky-list{left:0;right:0;top:auto;bottom:0;width:auto;max-height:46%;border-left:0;border-right:0;border-bottom:0;}
+  .sky-ctrl{bottom:auto;top:0.8rem;right:0.8rem;}
+  .sky-actions{left:0.8rem;right:0.8rem;bottom:0.8rem;max-width:none;}
+  .sky-actions button{flex:1 1 auto;padding:0.5rem 0.6rem;font-size:0.76rem;}
+  .sky-list{z-index:6;}
+  .sky-toast{bottom:auto;top:3.9rem;left:0.8rem;right:0.8rem;transform:translateY(-8px);max-width:none;}
+  .sky-toast.visible{transform:translateY(0);}
+  .sky-card{width:min(19rem,calc(100% - 20px));}
+}
+@media(max-width:520px){ .sky-ground-in{grid-template-columns:1fr;} }
+
+/* Without script the sky has nothing to show; the text index stands in. */
+.sm-index{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 4rem;}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139&deg;N &middot; 10.7522&deg;E</span>
+  <a href="index.html" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
+  <div class="nav-links">
+    <a href="about.html">About Me</a>
+    <span class="nav-sep">|</span>
+    <a href="knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="sitemap.html">Sitemap</a>
+  </div>
+  <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+<section class="sky">
+  <div class="sky-hud">
+    <h1>How To Find Your Way Around</h1>
+    <p class="sky-lede">The whole site as a night sky. Every star is an episode and every constellation is a series. There are {{SERIESCOUNT}} to find.</p>
+    <p class="sky-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{TRIPCOUNT}} destinations</p>
+    <p class="sky-count" role="status"></p>
+  </div>
+  <div class="sky-view">
+    <canvas class="sky-stars" aria-hidden="true"></canvas>
+    <svg class="sky-svg" role="group" aria-label="The site as a night sky. Each star is an episode and each constellation a series. A full text index is part of this page for anyone not using the map."></svg>
+    <div class="map-popup sky-card">
+      <span class="mp-tick tl"></span><span class="mp-tick br"></span>
+      <div class="mp-bd"></div>
+    </div>
+    <aside class="sky-list" aria-label="Episodes in this constellation"></aside>
+    <p class="sky-toast" role="status" aria-live="polite"></p>
+    <div class="sky-actions">
+      <button type="button" data-a="random" class="sky-primary">Take me to a star</button>
+      <button type="button" data-a="all">Name every constellation</button>
+      <button type="button" data-a="again">Start again</button>
+    </div>
+    <div class="sky-ctrl">
+      <button type="button" data-z="in" aria-label="Zoom in">+</button>
+      <button type="button" data-z="out" aria-label="Zoom out">&minus;</button>
+      <button type="button" data-z="reset" class="sky-reset">Whole sky</button>
+    </div>
+  </div>
+  <nav class="sky-ground" aria-label="Every other page on the site"></nav>
+  <p class="sky-hint">Click a star to find its constellation. Drag to look around.</p>
+</section>
+
+<noscript>
+  <style>.sky-view,.sky-hint,.sky-lede{display:none;}.sky-hud{position:static;padding:2rem clamp(1.25rem,5vw,4rem) 0;}</style>
+  <div class="sm-index">
+{{TREE}}
+  </div>
+</noscript>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <a href="index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
+      <p class="footer-tagline"><a href="mission.html">Touch The Sky With Glory</a></p>
+      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>0864, Oslo<br>Norway</p>
+    </div>
+    <div class="footer-col">
+      <h2>Listen</h2>
+      <a href="library.html">All Episodes</a>
+      <a href="tags.html">Topics</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+    <div class="footer-col">
+      <h2>Fly With Us</h2>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="destinations/kenya.html">Kenya Tour</a>
+      <a href="destinations/india.html">India Tour</a>
+      <a href="enquire.html">Enquire</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h2>About</h2>
+      <a href="about.html">About Me</a>
+      <a href="mission.html">Mission Statement</a>
+      <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="partners.html">Partner With Me</a>
+    </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+      <a href="participant-agreement.html">Participant Agreement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-listen-label">Listen on</span>
+    <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a>
+    <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a>
+    <a href="https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445" target="_blank" rel="noopener">Castbox</a>
+    <a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a>
+    <a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://www.instagram.com/anindersingh13" target="_blank" rel="noopener">Instagram</a>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+</footer>
+
+<script>window.SITEMAP_SKY = {{SKY}};</script>
+<script src="sitemap-sky.js"></script>
+</body>
+</html>

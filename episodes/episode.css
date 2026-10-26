@@ -1,0 +1,506 @@
+/* Chapter Deck episode page styles.
+   Taken verbatim from prototypes/episode-page-chapter-deck-FINAL.html so the
+   agreed design stays single sourced. Tokens, nav and footer come from ../styles.css. */
+
+
+  .cd-wrap{max-width:1400px;margin:0 auto;padding:0 clamp(1.5rem,4vw,3rem);}
+
+  /* HEADER */
+  .cd-head{padding:clamp(2rem,5vw,3rem) 0 clamp(1.5rem,3vw,2rem);}
+  .breadcrumb{color:var(--gray);font-size:0.78rem;margin-bottom:1.5rem;}
+  .breadcrumb a{color:var(--gray-light);}
+  .breadcrumb a:hover{color:var(--orange);}
+  .cd-epno{color:var(--orange);font-size:0.74rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.9rem;}
+  .cd-head h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.15;color:var(--white);max-width:20ch;letter-spacing:-0.015em;}
+  .cd-submeta{display:flex;gap:1.2rem;flex-wrap:wrap;color:var(--gray);font-size:0.85rem;margin-top:1rem;align-items:center;}
+  .cd-submeta strong{color:var(--gray-light);font-weight:500;}
+  .cd-dot{width:3px;height:3px;background:var(--gray);border-radius:50%;}
+
+  /* MAIN GRID */
+  .cd-main{display:grid;grid-template-columns:250px minmax(0,1fr) 290px;gap:clamp(1.5rem,3vw,2.5rem);padding-bottom:clamp(4rem,8vw,6rem);align-items:start;}
+  /* The Chapters rail is rendered EMPTY on reels and cinematics rather than
+     removed, so the three column grid is identical on every episode page and
+     nothing shifts. Do NOT collapse the grid for those pages: it was tried on
+     2026-09-11 and moved the player and every element under it. */
+
+  /* CHAPTER RAIL */
+  .cd-rail{position:sticky;top:1.5rem;}
+  .cd-rail-title{font-family:var(--font-display);font-size:0.72rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;padding-left:0.9rem;}
+  .cd-chap{display:block;position:relative;padding:0.7rem 0 0.7rem 0.9rem;border-left:2px solid var(--line);color:var(--gray-light);font-size:0.86rem;line-height:1.35;transition:all .2s ease;}
+  .cd-chap:hover{color:var(--white);border-left-color:var(--live);}
+  .cd-chap.active{color:var(--white);border-left-color:var(--orange);font-weight:600;}
+  .cd-chap time{display:block;color:var(--gray);font-size:0.74rem;margin-top:0.2rem;font-variant-numeric:tabular-nums;letter-spacing:0.03em;}
+  .cd-chap.active time{color:var(--orange);}
+
+  /* CENTER */
+  .cd-center{min-width:0;}
+  /* --cd-poster is the episode's own still, written by the generator only for a
+     validated video id. It shows until the iframe paints over it, and it is what
+     a clicked thumbnail morphs into on the way here. */
+  .cd-player{position:relative;width:100%;aspect-ratio:16/9;background:var(--cd-poster,none) center/cover no-repeat,var(--card);overflow:hidden;margin-bottom:1.2rem;
+    view-transition-class:ep-thumb;}
+  .cd-player img{width:100%;height:100%;object-fit:cover;opacity:0.55;}
+/* the prototype used a still image here; a real embed needs its own rule or it
+   falls back to the default 300x150 iframe size */
+.cd-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+  .cd-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;}
+  .cd-play-shape{width:82px;height:56px;border-radius:14px;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 30px rgba(255,117,23,0.45);transition:transform .2s ease;}
+  .cd-play:hover .cd-play-shape{transform:scale(1.08);}
+  .cd-play-shape svg{width:26px;height:26px;fill:var(--bg);margin-left:3px;}
+  .cd-player-corner{position:absolute;width:14px;height:14px;border:1.5px solid var(--orange);}
+  .cd-pc-tl{top:10px;left:10px;border-right:none;border-bottom:none;}
+  .cd-pc-br{bottom:10px;right:10px;border-left:none;border-top:none;}
+
+  .cd-listen{display:flex;gap:0.7rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+  .cd-lbtn{flex:1;min-width:120px;text-align:center;border:1px solid var(--edge-hi);padding:0.7rem 0.9rem;font-size:0.84rem;color:var(--gray-light);transform:skewX(-10deg);transform-origin:left top;transition:all .2s ease;}
+  .cd-lbtn span{display:inline-block;transform:skewX(10deg);}
+  .cd-lbtn:hover{background:var(--orange);border-color:var(--orange);color:var(--bg);}
+
+  .cd-summary{background:var(--card);padding:1.5rem;margin-bottom:2.5rem;border-left:2px solid var(--orange);}
+  .cd-summary p{color:var(--gray-light);font-size:0.97rem;line-height:1.75;}
+  .cd-summary p+p{margin-top:1rem;}
+
+  .cd-sec-head{font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:var(--white);padding-bottom:0.8rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;}
+  .cd-sec-head small{color:var(--gray);font-size:0.76rem;font-weight:400;letter-spacing:0.04em;}
+
+  .cd-block{margin-bottom:2.6rem;scroll-margin-top:1.5rem;}
+  .cd-block h2{font-family:var(--font-display);font-weight:700;font-size:1.08rem;color:var(--white);margin-bottom:0.3rem;line-height:1.3;}
+  .cd-block-time{display:inline-block;color:var(--orange);font-size:0.74rem;font-weight:700;letter-spacing:0.08em;margin-bottom:1rem;font-variant-numeric:tabular-nums;}
+  .cd-line{display:grid;grid-template-columns:64px minmax(0,1fr);gap:0.9rem;margin-bottom:1.1rem;align-items:baseline;}
+  .cd-ts{color:var(--gray);font-size:0.74rem;font-variant-numeric:tabular-nums;padding-top:0.35em;letter-spacing:0.03em;}
+  .cd-line p{color:var(--gray-light);font-size:0.96rem;line-height:1.8;}
+  .cd-spk{color:var(--white);font-weight:600;}
+
+  /* FAQ */
+  .cd-faq{margin-top:3rem;padding-top:2.2rem;border-top:1px solid var(--line);}
+  .cd-faq h2{font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:var(--white);margin-bottom:1.3rem;}
+  .cd-faq details{border-bottom:1px solid var(--line);padding:1rem 0;}
+  .cd-faq summary{color:var(--white);font-weight:600;font-size:0.97rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;}
+  .cd-faq summary::-webkit-details-marker{display:none;}
+  .cd-faq summary::after{content:"+";color:var(--orange);font-size:1.25rem;line-height:1;}
+  .cd-faq details[open] summary::after{content:"\2212";}
+  .cd-faq details p{color:var(--gray-light);font-size:0.93rem;line-height:1.75;margin-top:0.8rem;}
+
+  /* SIDEBAR */
+  .cd-side{position:sticky;top:1.5rem;}
+  .cd-box{background:var(--card);border:1px solid var(--line);padding:1.3rem;margin-bottom:1.1rem;position:relative;}
+  .cd-box h2, .cd-box h3{font-family:var(--font-display);font-weight:700;font-size:0.72rem;color:var(--orange);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.9rem;}
+  .cd-box p{color:var(--gray-light);font-size:0.87rem;line-height:1.65;}
+  .cd-guest-row{display:flex;gap:0.9rem;align-items:center;margin-bottom:0.9rem;}
+  .cd-guest-row img{width:54px;height:54px;object-fit:cover;border-radius:50%;flex-shrink:0;border:1px solid var(--live);}
+  .cd-guest-name{color:var(--white);font-weight:600;font-size:0.95rem;}
+  .cd-guest-role{color:var(--gray);font-size:0.78rem;}
+  .cd-link{display:block;color:var(--gray-light);font-size:0.85rem;padding:0.5rem 0;border-bottom:1px solid var(--line);line-height:1.4;}
+  .cd-link:last-child{border-bottom:none;}
+  .cd-link:hover{color:var(--orange);}
+  .cd-tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
+  /* The outline means "this goes somewhere". A tag used by fewer than three
+     episodes has no page of its own and renders as a <span>, so it keeps the
+     type and the orange # but loses the box. Before this, a dead label was
+     dressed identically to a link. Padding is deliberately kept on both so the
+     two sit on the same baseline in the flex row. User's call, 2026-09-11. */
+  /* Download box. The heading says what it is; the link says what you get, so
+     the two do not repeat each other. The size is shown so nobody starts a
+     100 MB download on mobile data by accident: these run from 1 to 153 MB. */
+  .cd-dl{display:block;text-decoration:none;}
+  .cd-dl-v{display:block;color:var(--white);font-family:var(--font-display);font-weight:600;
+    font-size:0.95rem;font-variant-numeric:tabular-nums;transition:color 0.18s ease;}
+  .cd-dl-s{display:block;color:var(--gray);font-size:0.78rem;margin-top:0.25rem;}
+  /* White at rest, orange on hover. The heading above it is already orange, so
+     two orange lines in one small box was one too many. */
+  .cd-dl:hover .cd-dl-v{color:var(--orange);}
+
+  .cd-tag{color:var(--gray-light);font-size:0.7rem;padding:0.28rem 0.6rem;text-transform:uppercase;letter-spacing:0.04em;}
+  a.cd-tag{border:1px solid var(--live);}
+
+  @media(max-width:1150px){
+    .cd-main{grid-template-columns:220px minmax(0,1fr);}
+    /* the side boxes become a full-width row of the same grid, and a sticky rail
+       is bounded by the whole grid, so it would ride down over them: here it scrolls */
+    .cd-rail{position:static;}
+    .cd-side{grid-column:1/-1;position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;}
+    .cd-box{margin-bottom:0;}
+  }
+  @media(max-width:820px){
+    .cd-main{grid-template-columns:1fr;}
+    .cd-rail{position:static;order:-1;background:var(--card);padding:1.1rem;}
+    .cd-rail-title{padding-left:0;}
+    .cd-chap{padding-left:0.8rem;}
+    /* Stacked, the chapter list comes before the player, so the player opens
+       below the first screen and a clicked thumbnail would fly off the bottom
+       of it. The page cross-fades instead. !important because the name is
+       written on the element itself by the generator. The v2 layout puts the
+       player first and keeps the morph. */
+    .cd-wrap:not(.cd-v2) .cd-main:has(.cd-rail) .cd-player{view-transition-name:none!important;}
+  }
+
+.cd-rail-none{color:var(--gray);font-size:0.8rem;line-height:1.5;}
+
+/* Provenance line above every transcript. Sits OUTSIDE .cd-clip so the
+   Continue reading toggle can never hide it. */
+.cd-tnote{color:var(--gray);font-size:0.78rem;line-height:1.5;margin:0 0 14px;}
+
+/* Transcript clip. The full text is always present in the HTML; this only
+   limits the visible height, so crawlers that do not run scripts still read
+   every word. Never swap this for display:none. */
+.cd-clip{position:relative;max-height:620px;overflow:hidden;
+  transition:max-height .35s ease;}
+.cd-clip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:190px;
+  pointer-events:none;background:linear-gradient(180deg,rgba(20,21,25,0) 0%,
+  rgba(20,21,25,0.82) 62%,rgba(20,21,25,1) 100%);transition:opacity .3s ease;}
+.cd-clip.is-open{max-height:none;}
+.cd-clip.is-open::after{opacity:0;}
+.cd-more{display:inline-block;margin-top:1.4rem;padding:0.62rem 1.5rem;
+  background:none;border:1px solid var(--edge);color:var(--gray-light);
+  font-family:var(--font-body);font-size:0.84rem;cursor:pointer;
+  transition:color .16s ease,border-color .16s ease;}
+.cd-more:hover{color:var(--white);border-color:var(--orange);}
+.cd-more .cd-more-shut{display:none;}
+.cd-more[aria-expanded="true"] .cd-more-open{display:none;}
+.cd-more[aria-expanded="true"] .cd-more-shut{display:inline;}
+/* without scripts the clip must not trap the text */
+.no-js .cd-clip{max-height:none;}
+.no-js .cd-clip::after,.no-js .cd-more{display:none;}
+@media (prefers-reduced-motion:reduce){.cd-clip{transition:none;}}
+
+/* Audio-only episodes: no video exists, so the player slot shows the episode
+   artwork and says so plainly rather than rendering an empty iframe. */
+.cd-player-audio{display:flex;flex-direction:column;align-items:stretch;background:var(--card);}
+.cd-player-audio img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;}
+.cd-audio-note{margin:0;padding:.85rem 1rem;color:var(--gray-light);font-size:.88rem;line-height:1.6;
+  border-top:1px solid var(--rule);}
+
+/* Title block and the pull quote beside it.
+   The h1 is capped at 20ch, which left the right-hand side of the header empty.
+   The quote fills it on wide screens and stacks underneath on narrow ones. */
+.cd-headgrid{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:start;}
+@media (min-width:62rem){
+  .cd-headgrid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.5rem);}
+}
+.cd-quote{margin:0;border-left:2px solid var(--orange);padding:.2rem 0 .2rem 1.3rem;}
+.cd-quote blockquote{margin:0;}
+.cd-quote blockquote p{margin:0;color:var(--white);font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.02rem,1.7vw,1.22rem);line-height:1.55;letter-spacing:-.005em;}
+.cd-quote blockquote p::before{content:"\201C";color:var(--orange);}
+.cd-quote blockquote p::after{content:"\201D";color:var(--orange);}
+.cd-quote cite{display:block;margin-top:.8rem;color:var(--gray);font-style:normal;font-size:.84rem;
+  letter-spacing:.04em;text-transform:uppercase;}
+.cd-quote cite::before{content:"\2014 ";}
+
+/* ===== AUDIO PLAYER =========================================================
+   Eight episodes were never filmed. They had a still and two links out, and
+   nothing played on the page. This sits over the artwork inside .cd-player.
+
+   The waveform is drawn only when real peaks exist in waveforms.json. A
+   plausible looking squiggle would be invented data. Without peaks the bar is
+   a plain track and everything else behaves identically. */
+/* The video slot is locked to 16/9 with overflow:hidden, which is right for an
+   iframe. For an audio episode the box now holds artwork AND a control strip, so
+   it has to grow. Without this the player laid out correctly, reported the right
+   position, and was clipped out of sight: it was measured and never seen. */
+.cd-player-audio{position:relative;aspect-ratio:auto;overflow:visible;}
+/* UNDER the artwork, not over it. Overlaid, the gradient landed exactly on the
+   guest name printed at the foot of the template and cut it in half. The
+   artwork is the identity of these eight episodes; the player is a control
+   strip and can have its own band. */
+.ep-au{
+  position:relative;z-index:2;
+  display:flex;align-items:center;gap:0.85rem;
+  padding:0.8rem clamp(0.9rem,3vw,1.4rem);
+  background:var(--card);border-top:1px solid var(--edge);
+}
+.ep-au-play{
+  flex-shrink:0;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--live);background:rgba(20,21,25,0.72);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;
+  transition:border-color .18s ease, background .18s ease;
+}
+.ep-au-play:hover{border-color:var(--orange);background:var(--wash);}
+/* A triangle, not a glyph: a character would inherit the button skew rules and
+   sit off centre optically. 2px of left padding does the optical centring. */
+.ep-au-tri{
+  width:0;height:0;margin-left:3px;
+  border-top:9px solid transparent;border-bottom:9px solid transparent;
+  border-left:15px solid var(--orange);
+}
+.ep-au-pause{display:none;width:14px;height:16px;
+  border-left:4px solid var(--orange);border-right:4px solid var(--orange);}
+.ep-au.is-playing .ep-au-tri{display:none;}
+.ep-au.is-playing .ep-au-pause{display:block;}
+.ep-au-cur,.ep-au-dur{
+  flex-shrink:0;font-size:0.76rem;color:var(--gray-light);
+  font-variant-numeric:tabular-nums;min-width:3.2em;
+}
+.ep-au-dur{text-align:right;}
+.ep-au-bar{
+  position:relative;flex:1;height:38px;cursor:pointer;
+  display:flex;align-items:center;touch-action:none;
+}
+.ep-au-bar:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+.ep-au-track{position:absolute;left:0;right:0;height:3px;background:var(--edge);}
+.ep-au-fill{position:absolute;left:0;height:3px;width:0;background:var(--orange);}
+/* With peaks the flat track gives way to the shape. The fill becomes the
+   coloured overlay clipped to the played width, so the waveform is drawn once. */
+.ep-au.has-wave .ep-au-track,.ep-au.has-wave .ep-au-fill{height:100%;top:0;}
+.ep-au.has-wave .ep-au-track{background:none;}
+.ep-au.has-wave .ep-au-fill{background:none;overflow:hidden;}
+.ep-au-wave{position:absolute;left:0;top:0;width:100%;height:100%;}
+.ep-au.has-wave .ep-au-fill .ep-au-wave{max-width:none;}
+.ep-au-wave path{fill:var(--edge-hi);}
+.ep-au.has-wave .ep-au-fill .ep-au-wave path{fill:var(--orange);}
+.ep-au-head{
+  position:absolute;top:50%;width:2px;height:16px;margin-top:-8px;margin-left:-1px;
+  background:var(--white);pointer-events:none;
+}
+/* Chapter marks are real data, straight off the episode's own chapter list. */
+.ep-au-chap{
+  position:absolute;top:50%;width:11px;height:11px;margin-top:-5px;margin-left:-5px;
+  padding:0;border:none;border-radius:50%;background:var(--edge-hi);
+  cursor:pointer;transition:background .16s ease, transform .16s ease;
+}
+.ep-au-chap:hover{background:var(--orange);transform:scale(1.35);}
+.ep-au-chap:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+.ep-au-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+@media(max-width:560px){
+  .ep-au{gap:0.55rem;padding:0.7rem 0.8rem;}
+  .ep-au-play{width:40px;height:40px;}
+  .ep-au-cur,.ep-au-dur{font-size:0.7rem;min-width:2.9em;}
+}
+@media(prefers-reduced-motion: reduce){
+  .ep-au-chap{transition:none!important;}
+}
+
+/* =====================================================================
+   v2: episode page redesign (site visual plan, Phase 3).
+   Everything below is scoped to .cd-v2, which generate_chapter_deck.py
+   sets only for slugs in V2_ON. Pages outside the rollout are untouched.
+   Sizes come from the type scale in styles.css.
+   ===================================================================== */
+
+/* ---- HORIZON: nothing on this page ends in a hard edge -------------------
+   Three rules, so the page reads as one sky from the header down rather than
+   a stack of boxes.
+
+   1. LIGHT IS NEVER CUT. The episode art is one layer of light behind the
+      header and the title, full bleed, and it dissolves into the page. The old
+      band blurred the art inside a box, so the blur spilled out past the box
+      and was cut off by the header line, the rule under the title and the
+      page edges: three hard seams. Here the layer is sized to the page, its
+      sides run past the screen and are clipped there, and a mask fades it out
+      towards the player, so there is no seam anywhere.
+   2. LINES ARE HORIZONS. A line that separates things fades out at its ends,
+      the way the orange rule at the top of the header already does. A line
+      that stops dead is a boundary; one that fades is a horizon.
+   3. PANELS ARE LIGHT, NOT BOXES. A panel is lit from one edge and fades
+      towards the other, so it sits in the page instead of on it. Cards keep
+      their brackets: the orange corners still arrive under a pointer.
+
+   --cd-art is written on .cd-wrap by the generator, so the header layer and
+   the glow under the player both read it. */
+.page-wrap:has(> .cd-v2){position:relative;overflow-x:clip;}
+.page-wrap:has(> .cd-v2) > nav{background:none;border-bottom:1px solid;
+  border-image:linear-gradient(90deg,transparent,var(--edge) 18%,var(--edge) 82%,transparent) 1;}
+
+.cd-v2 .cd-head{position:static;padding:clamp(2.4rem,6vw,4.2rem) 0 clamp(2.4rem,5vw,3.6rem);margin-bottom:clamp(.5rem,2vw,1.5rem);}
+/* The sky. Positioned on .page-wrap (cd-head is static), so it starts under the
+   header and is as wide as the screen whatever the content width. The legibility
+   shading is a gradient in the same background, blurred with it, so the two can
+   never disagree about where they end. */
+.cd-v2 .cd-head::before{content:"";position:absolute;z-index:-1;pointer-events:none;
+  top:0;left:-80px;right:-80px;height:clamp(980px,62vw + 300px,1180px);
+  background:
+    linear-gradient(90deg,rgba(20,21,25,.9) 0%,rgba(20,21,25,.72) 45%,rgba(20,21,25,.45) 100%),
+    var(--cd-art,none) center 30%/cover no-repeat;
+  filter:blur(42px) saturate(1.05);opacity:.8;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.45) 62%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.45) 62%,transparent 100%);}
+.cd-v2 .cd-head::after{content:none;}
+.cd-v2 .cd-wrap,.cd-wrap.cd-v2{overflow-x:clip;}
+.cd-v2 .cd-epno{font-size:var(--fs-micro);}
+.cd-v2 .cd-head h1{font-size:clamp(1.9rem,4vw,3rem);max-width:22ch;}
+/* The quote keeps its orange rule and loses its box. */
+.cd-v2 .cd-quote{background:none;padding:.4rem 0 .4rem 1.4rem;}
+
+/* The player gives off its own light, the way a screen does in a dark room.
+   A blurred copy of the art sits under it and spreads past its edges onto the
+   page. On phones .cd-center is display:contents, so this pseudo element lands
+   in .cd-main, whose first row is the player: it lines up either way. */
+.cd-v2 .cd-main{position:relative;}
+.cd-v2 .cd-center{position:relative;}
+.cd-v2 .cd-center::before{content:"";position:absolute;z-index:-1;pointer-events:none;
+  left:0;right:0;top:0;aspect-ratio:16/9;
+  background:var(--cd-art,none) center/cover no-repeat;
+  filter:blur(64px) saturate(1.3);opacity:.38;transform:scale(1.04,1.1);}
+
+/* Summary: lit from its orange edge. The light is its own layer so it can
+   spread past the panel as an ellipse; a background would be cut square at the
+   panel's top and bottom. */
+.cd-v2 .cd-summary{position:relative;isolation:isolate;background:none;
+  border:0;border-left:3px solid var(--orange);padding:1.6rem 1.7rem;
+  color:var(--white);font-size:var(--fs-lead);line-height:1.7;}
+.cd-v2 .cd-summary::after{content:"";position:absolute;z-index:-1;pointer-events:none;inset:-2.5rem -1rem -2.5rem 0;
+  background:radial-gradient(75% 60% at 0% 50%,rgba(255,117,23,.13) 0%,rgba(255,117,23,.045) 50%,rgba(255,117,23,0) 100%);}
+.cd-v2 .cd-summary::before{content:"In short";display:block;color:var(--orange);font-size:var(--fs-micro);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:.7rem;}
+
+/* Horizons: the section rule fades to the right, the chapter rail's line fades
+   out below the last chapter, and the side panels are lit from their top left
+   corner, where the bracket arrives, fading out to the right and below. */
+.cd-v2 .cd-sec-head{border-bottom:1px solid;border-image:linear-gradient(90deg,var(--edge),transparent 90%) 1;}
+.cd-v2 .cd-rail .cd-chap:last-child:not(.active){border-image:linear-gradient(180deg,var(--line),transparent) 1;}
+.cd-v2 .cd-box{background:radial-gradient(130% 120% at 0% 0%,rgba(180,180,180,.07) 0%,rgba(180,180,180,.025) 45%,rgba(180,180,180,0) 75%);
+  border:0;border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 60%,transparent) 1;}
+/* The link rows inside the panels fade the same way. */
+.cd-v2 .cd-link{border-bottom:1px solid;border-image:linear-gradient(90deg,var(--line),transparent) 1;}
+.cd-v2 .cd-link:last-child{border-image:none;border-bottom:0;}
+
+/* The sky drifts a little slower than the page as you scroll away from it. */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:scroll()){
+    .cd-v2 .cd-head::before{animation:cd-sky linear both;animation-timeline:scroll(root);animation-range:0 900px;}
+    @keyframes cd-sky{to{translate:0 180px;opacity:.55;}}
+  }
+}
+
+/* The line under the title. On a phone it wraps, and a separator dot left
+   at the end of one line or the start of the next reads as a stray mark, so
+   below 560px the dots go and the gap does the separating. */
+.cd-v2 .cd-submeta{column-gap:1.1rem;row-gap:.4rem;}
+@media (max-width:560px){ .cd-v2 .cd-dot{display:none;} }
+
+/* A finger needs 44px. Topic tags and related links keep their compact look
+   under a mouse and grow to a full tap target on touch screens only. */
+@media (pointer:coarse){
+  .cd-v2 .cd-tag{display:inline-flex;align-items:center;min-height:44px;padding-inline:.75rem;}
+  .cd-v2 .cd-tags{gap:.55rem;}
+  .cd-v2 .cd-link{display:flex;align-items:center;min-height:44px;padding:.35rem 0;}
+}
+
+/* Transcript: a comfortable reading measure and size */
+.cd-v2 .cd-line{max-width:46rem;}
+.cd-v2 .cd-line p{font-size:var(--fs-body);line-height:1.8;}
+
+/* Phones: player first, then a swipeable chapter strip, then the rest.
+   .cd-center is dissolved into the grid so its children can be ordered
+   around the chapter rail. The rail's links and ids are unchanged, so the
+   scrollspy and every #c anchor keep working. */
+@media(max-width:820px){
+  .cd-v2 .cd-main{gap:1.2rem;}
+  .cd-v2 .cd-center{display:contents;}
+  .cd-v2 .cd-center > *{order:4;min-width:0;}
+  .cd-v2 .cd-player{order:1;margin-bottom:0;}
+  .cd-v2 .cd-listen{order:2;margin-bottom:0;}
+  .cd-v2 .cd-rail{order:3;display:flex;gap:.6rem;overflow-x:auto;scroll-snap-type:x proximity;
+    background:none;padding:0 0 .4rem;margin:0 calc(-1 * clamp(1.5rem,4vw,3rem));padding-left:clamp(1.5rem,4vw,3rem);padding-right:clamp(1.5rem,4vw,3rem);
+    scroll-padding-inline:clamp(1.5rem,4vw,3rem);scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .cd-v2 .cd-rail::-webkit-scrollbar{display:none;}
+  .cd-v2 .cd-rail-title{flex:0 0 auto;align-self:center;margin:0 .1rem 0 0;padding:0;scroll-snap-align:start;}
+  .cd-v2 .cd-chap{flex:0 0 auto;width:min(68vw,15rem);scroll-snap-align:start;background:var(--card);
+    border:1px solid var(--edge);border-left:2px solid var(--line);padding:.8rem .9rem;min-height:44px;}
+  .cd-v2 .cd-chap.active{border-left-color:var(--orange);}
+  .cd-v2 .cd-rail:empty,.cd-v2 .cd-rail:not(:has(.cd-chap)){display:none;}
+  .cd-v2 .cd-summary{font-size:var(--fs-body);}
+  .cd-v2 .cd-side{order:5;}
+  /* The title spans the whole screen here, so the shading is even across it
+     rather than dark on the left, or the sky would barely show on a phone. */
+  .cd-v2 .cd-head::before{background:
+    linear-gradient(180deg,rgba(20,21,25,.5) 0%,rgba(20,21,25,.62) 100%),
+    var(--cd-art,none) center 30%/cover no-repeat;}
+}
+
+/* ===== The transcript follows the conversation (episode-sync.js) ==========
+   Timestamps are controls: they turn orange with a small play mark under the
+   pointer. While the video plays, the line being spoken is lit: full white
+   text and an orange tick in the margin, easing in and out so the light seems
+   to move down the page with the voice. */
+.cd-seek{cursor:pointer;border-radius:2px;transition:color .18s ease;}
+.cd-seek:hover,.cd-seek:focus-visible{color:var(--orange);}
+.cd-ts.cd-seek::before{content:"\25B6";display:inline-block;font-size:.55em;margin-right:.35em;
+  opacity:0;transform:translateX(-3px);transition:opacity .18s ease,transform .18s ease;vertical-align:.15em;}
+.cd-ts.cd-seek:hover::before,.cd-ts.cd-seek:focus-visible::before,.cd-line.is-now .cd-ts::before{opacity:1;transform:none;}
+.cd-line{position:relative;transition:opacity .4s ease;}
+.cd-line p{transition:color .4s ease;}
+/* The tick sits in the gap between the time and the words: further left it
+   would be outside the transcript's clip box and never be seen. */
+.cd-line::before{content:"";position:absolute;left:calc(64px + .45rem - 1px);top:.35em;bottom:.35em;width:2px;
+  background:var(--orange);border-radius:1px;opacity:0;transform:scaleY(.4);
+  transition:opacity .35s ease,transform .35s ease;}
+.cd-line.is-now::before{opacity:1;transform:none;}
+.cd-line.is-now p{color:var(--white);}
+.cd-line.is-now .cd-ts{color:var(--orange);}
+@media (prefers-reduced-motion: reduce){.cd-line,.cd-line p,.cd-line::before,.cd-seek,.cd-ts.cd-seek::before{transition:none;}}
+
+/* =====================================================================
+   The three additions. Approved in the episode page prototype, October 2026.
+   ===================================================================== */
+
+/* ---- 1. Series emblem: the library's own drawing for this series, in the
+   header, in place of the bare episode number. ---- */
+.cd-v2 .cd-series{display:inline-flex;align-items:center;gap:0.95rem;margin-bottom:1.15rem;color:var(--gray-light);}
+.cd-series-mark{position:relative;flex:none;width:56px;height:56px;display:grid;place-items:center;transition:color .18s ease;}
+.cd-series-mark::before,.cd-series-mark::after{content:"";position:absolute;width:10px;height:10px;border:1.5px solid var(--orange);}
+.cd-series-mark::before{top:0;left:0;border-right:0;border-bottom:0;}
+.cd-series-mark::after{bottom:0;right:0;border-left:0;border-top:0;}
+.cd-series-mark svg{display:block;width:44px;height:44px;}
+.cd-series-name{display:block;font-family:var(--font-display);font-weight:600;font-size:1rem;line-height:1.2;color:var(--white);transition:color .18s ease;}
+.cd-series-ep{display:block;margin-top:0.3rem;color:var(--orange);font-size:var(--fs-micro);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+.cd-series:hover .cd-series-mark,.cd-series:hover .cd-series-name{color:var(--orange);}
+
+/* ---- 2. Chapter timeline: the whole conversation as one bar under the
+   player, each chapter as long as it runs. ---- */
+.cd-tl{margin:-0.35rem 0 1.4rem;}
+.cd-tl-bar{display:flex;gap:3px;height:28px;}
+.cd-tl-seg{position:relative;display:block;flex-basis:0;flex-shrink:1;min-width:6px;}
+.cd-tl-seg::before{content:"";position:absolute;left:0;right:0;top:50%;height:6px;margin-top:-3px;
+  background:var(--edge);transition:background .16s ease,height .16s ease,margin-top .16s ease;}
+.cd-tl-seg.done::before{background:var(--live);}
+.cd-tl-seg.active::before{background:var(--orange);height:10px;margin-top:-5px;}
+.cd-tl-seg:hover::before,.cd-tl-seg:focus-visible::before{background:var(--white);height:10px;margin-top:-5px;}
+.cd-tl-seg:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+.cd-tl-meta{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:0.1rem 0 0;font-size:0.84rem;color:var(--gray);}
+.cd-tl-now{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cd-tl-now b{color:var(--orange);font-weight:700;font-size:0.76rem;letter-spacing:0.08em;font-variant-numeric:tabular-nums;margin-right:0.65rem;}
+.cd-tl-now span{color:var(--white);}
+.cd-tl-len{flex:none;font-size:0.76rem;font-variant-numeric:tabular-nums;letter-spacing:0.03em;}
+.cd-tl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+@media (pointer:coarse){ .cd-tl-bar{height:44px;} }
+@media(max-width:820px){ .cd-v2 .cd-tl{order:1;margin:-0.7rem 0 0;} }
+
+/* ---- 3. On the map: a small glass globe, drawn once when the page is
+   generated, with the same distance and bearing the homepage card shows. ---- */
+.cd-map .cd-globe{display:block;width:100%;max-width:264px;height:auto;margin:-0.5rem auto 0.5rem;}
+.mg-n{font:600 9px var(--font-body);fill:var(--orange);text-anchor:middle;dominant-baseline:central;letter-spacing:0.1em;}
+.cd-box .cd-map-co{color:var(--orange);font-size:0.72rem;letter-spacing:0.1em;font-variant-numeric:tabular-nums;line-height:1.4;}
+.cd-box .cd-map-rd{display:flex;justify-content:space-between;gap:0.8rem;margin:0.25rem 0 0.6rem;
+  color:var(--gray);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;font-variant-numeric:tabular-nums;line-height:1.4;}
+.cd-map .cd-link{color:var(--white);}
+.cd-map .cd-link:hover{color:var(--orange);}
+.mg-route{stroke-dasharray:1;stroke-dashoffset:0;}
+.mg-index{transform-origin:132px 132px;transform:rotate(var(--brg,0deg));}
+.mg-pulse{transform-box:fill-box;transform-origin:center;animation:mg-pulse 2.4s ease-out infinite;}
+@keyframes mg-pulse{from{transform:scale(0.4);opacity:0.8;}to{transform:scale(1.5);opacity:0;}}
+@media (prefers-reduced-motion:no-preference){
+  /* The line is drawn out from Oslo and the marker on the ring swings round
+     to the bearing, once, when the panel first comes into view. */
+  .mg-route{transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1) .25s;}
+  .mg-index{transition:transform 1.2s cubic-bezier(.3,0,.2,1) .25s;}
+  .mg-pin{transition:opacity .4s ease 1.3s;}
+  .js .cd-map:not(.in) .mg-route{stroke-dashoffset:1;}
+  .js .cd-map:not(.in) .mg-index{transform:rotate(0deg);}
+  .js .cd-map:not(.in) .mg-pin{opacity:0;}
+}
+@media (prefers-reduced-motion:reduce){ .mg-pulse{animation:none;opacity:0.5;} }
+
+/* On a phone the map box moves up, to sit between the summary and the
+   transcript instead of at the very end of the page: the sidebar is dissolved
+   into the grid like .cd-center above, so its boxes can be ordered. */
+@media(max-width:820px){
+  .cd-v2 .cd-side{display:contents;}
+  .cd-v2 .cd-side > .cd-box{order:7;}
+  .cd-v2 .cd-side > .cd-map{order:5;}
+  .cd-v2 .cd-center > .cd-sec-head,
+  .cd-v2 .cd-center > .cd-tnote,
+  .cd-v2 .cd-center > .cd-clip,
+  .cd-v2 .cd-center > .cd-more,
+  .cd-v2 .cd-center > .cd-faq{order:6;}
+}
